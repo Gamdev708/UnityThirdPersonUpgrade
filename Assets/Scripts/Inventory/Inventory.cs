@@ -12,11 +12,12 @@ namespace ThirdPerson.Inventory
         UnityEvent<InventoryItem> _onItemAdded = new UnityEvent<InventoryItem>();
         UnityEvent<InventoryItem> _onItemRemoved = new UnityEvent<InventoryItem>();
 
-        bool AddItem(InventoryItem item)
+        public bool AddItem(InventoryItem item)
         {
             if (_items.Count >= _maxSize) return false;
             _items.Add(item);
             _onItemAdded.Invoke(item);
+            Debug.Log($"Added {item.ItemName} to inventory.");
             return true;
         }
         public void RemoveItem(InventoryItem item)
@@ -28,12 +29,13 @@ namespace ThirdPerson.Inventory
         {
             if (HasItem(inventoryItem))
             {
-                return _items.Find(item => item == inventoryItem);
+                InventoryItem foundItem = _items.Find(item => item == inventoryItem);
+                return foundItem;
             }
             return null;
         }
 
-        bool HasItem(InventoryItem inventoryItem)
+        public bool HasItem(InventoryItem inventoryItem)
         {
             return _items.Contains(inventoryItem);
         }

@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Controls",
     "maps": [
         {
@@ -9,7 +10,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "65696ef5-1b1b-4bd9-bdce-efa349ef2ff8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -64,6 +65,15 @@
                     "type": "Button",
                     "id": "c9603435-2965-492c-b5bd-effd34d45c17",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interaction",
+                    "type": "Button",
+                    "id": "11ddfaac-7696-4a1c-87a7-91787b358814",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -320,6 +330,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "138cb8f1-fca5-4172-9476-c131e1d96169",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mouse & Keyboard",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
