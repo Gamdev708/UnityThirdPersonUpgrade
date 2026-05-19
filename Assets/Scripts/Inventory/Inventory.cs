@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,23 +15,28 @@ namespace ThirdPerson.Inventory
 
         public bool AddItem(InventoryItem item)
         {
-            if (_items.Count >= _maxSize) return false;
+            if (_items.Count >= _maxSize)
+            {
+                Debug.Log("Inventory is full. Cannot add item.");
+                return false;
+            }
             _items.Add(item);
             _onItemAdded.Invoke(item);
             Debug.Log($"Added {item.ItemName} to inventory.");
             return true;
         }
+
         public void RemoveItem(InventoryItem item)
         {
             _items.Remove(item);
             _onItemRemoved.Invoke(item);
         }
-        public InventoryItem GetItem(InventoryItem inventoryItem)
+        public InventoryItem GetItem(ItemType itemType)
         {
-            if (HasItem(inventoryItem))
+            if (HasItem(itemType))
             {
-                InventoryItem foundItem = _items.Find(item => item == inventoryItem);
-                return foundItem;
+                InventoryItem foundItem = _items.Where(item => item.ItemType == itemType).FirstOrDefault();
+                return foundItem; 
             }
             return null;
         }
@@ -40,5 +46,9 @@ namespace ThirdPerson.Inventory
             return _items.Contains(inventoryItem);
         }
 
+        public bool HasItem(ItemType itemType)
+        {
+            return _items.Any(item => item.ItemType == itemType);
+        }
     }
 }

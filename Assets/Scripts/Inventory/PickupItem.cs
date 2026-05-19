@@ -9,13 +9,14 @@ namespace ThirdPerson.Inventory
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collided with " + other.gameObject.name);
             if (other.TryGetComponent(out Inventory inventory))
             {
-                if (inventory.AddItem(GetComponent<PickupItem>().Item))
+                Item.transform.SetParent(inventory.transform); // detach before destroy
+                if (inventory.AddItem(Item))
                 {
                     Destroy(gameObject);
                 }
+
             }
         }
     }

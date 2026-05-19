@@ -59,22 +59,4 @@ public abstract class PlayerBaseState : State
             stateMachine.Inventory.AddItem(item.Item);
         }
     }
-
-    protected void Discard(InventoryItem item)
-    {
-        if (item == null)
-        {
-            return;
-        }
-        stateMachine.Inventory.RemoveItem(item);
-    }
-
-    protected InventoryItem UseItem(InventoryItem item)
-    {
-        if (item == null)
-        {
-            return null;
-        }
-        return stateMachine.Inventory.GetItem(item);
-    }
 }

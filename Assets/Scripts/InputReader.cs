@@ -14,7 +14,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action JumpEvent;
     public event Action DodgeEvent;
     public event Action TargetEvent;
-    public event Action InteractionEvent;
 
     private Controls controls;
 
@@ -101,18 +100,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         else if (context.canceled)
         {
             IsBlocking = false;
-        }
-    }
-
-    public void OnInteraction(InputAction.CallbackContext context)
-    {
-        if (!context.performed)
-        {
-            return;
-        }
-        if (InteractionEvent != null)
-        {
-            InteractionEvent.Invoke();
         }
     }
 }
