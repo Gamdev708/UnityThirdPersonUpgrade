@@ -20,6 +20,10 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public int AttackDamage { get; private set; }
     [field: SerializeField] public float AttackKnockback { get; private set; }
 
+    // Setting up the patrol system
+    [field: SerializeField] public Transform[] PatrolWaypoints { get; private set; }
+    [field: SerializeField] public float PatrolIdleDuration { get; private set; } = 2f;
+
     public Health Player { get; private set; }
 
     private void Start()
@@ -28,7 +32,15 @@ public class EnemyStateMachine : StateMachine
 
         Agent.updatePosition = false;
 
-        SwitchState(new EnemyIdleState(this));
+        // Automatically choose patrol or idle based on whether waypoints are assigned
+        if (PatrolWaypoints != null && PatrolWaypoints.Length > 0)
+        {
+            SwitchState(new EnemyPatrolState(this));
+        }
+        else
+        {
+            SwitchState(new EnemyIdleState(this));
+        }
     }
 
     private void OnEnable() 
