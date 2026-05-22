@@ -18,6 +18,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Enter()
     {
+        stateMachine.Agent.SetDestination(stateMachine.Player.transform.position);
         FacePlayer();
         stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, CrossFadeDuration);
     }
@@ -55,10 +56,17 @@ public class EnemyChasingState : EnemyBaseState
         {
             stateMachine.Agent.destination = stateMachine.Player.transform.position;
 
-            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
-        }
+            if (!stateMachine.Agent.pathPending)
+            {
+                // Calculate direction manually from the agent's path
+                // rather than relying on desiredVelocity which is affected by agent speed
+                Vector3 direction = (stateMachine.Agent.steeringTarget - stateMachine.transform.position).normalized;
 
-        stateMachine.Agent.velocity = stateMachine.Controller.velocity;
+                Move(direction * stateMachine.MovementSpeed, deltaTime);
+            }
+
+            stateMachine.Agent.velocity = stateMachine.Controller.velocity;
+        }
     }
 
     private bool IsInAttackRange()
