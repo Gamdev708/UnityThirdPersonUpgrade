@@ -264,7 +264,7 @@ void LitPassFragment(
     
     float heightFog = min(input.positionWS.y - 0, 0);
     
-    heightFog = pow(-heightFog, 1) * 0.01;
+    heightFog = pow(-heightFog, 1) * 0.005;
     
     heightFog = saturate(heightFog);
     
