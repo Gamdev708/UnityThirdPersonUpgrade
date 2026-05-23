@@ -9,6 +9,15 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
 
+    public Vector2 CameraTurnValue()
+    {
+        Vector2 mouseDelta = Input.mousePositionDelta;
+
+        Vector2 value = new Vector2(-mouseDelta.y, mouseDelta.x);
+
+        return value;
+    }
+
     public Vector2 MovementValue { get; private set; }
 
     public event Action JumpEvent;

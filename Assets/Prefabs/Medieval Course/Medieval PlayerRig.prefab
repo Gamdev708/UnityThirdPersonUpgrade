@@ -711,7 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2595282243623927869}
   m_Layer: 0
-  m_Name: PlayerRig
+  m_Name: Medieval PlayerRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
