@@ -9,9 +9,10 @@ public class EnergyCannonPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Pickup triggered");
         player.AttachCannon(cannon);
 
-        pickupAudio.Play();
+        AudioSource.PlayClipAtPoint(pickupAudio.clip, transform.position);
 
         gameObject.SetActive(false);
     }
