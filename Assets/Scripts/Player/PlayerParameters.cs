@@ -16,4 +16,11 @@ public class PlayerParameters : ScriptableObject
     public float jumpExponent;
 
     public float meleeDuration;
+
+    public Vector3 cannonPosition;
+    public Vector3 cannonRotation;
+
+    public float shootDuration;
+
+    public float getCannonDuration;
 }

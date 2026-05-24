@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Rigidbody rigidbody;
     public SphereCollider sphereCollider;
 
+    public Transform rightClaw;
+
     public Vector3 CenterPosition => sphereCollider.bounds.center;
 
     float lastUpdateRotation, nextUpdateRotation;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
 
     public enum State
     {
-        move, jump, melee, shoot
+        move, jump, melee, shoot, getCannon
     }
 
     public State state;
@@ -28,9 +30,22 @@ public class Player : MonoBehaviour
     float timer;
 
     public bool isIdle;
+
     public bool jumpWasReleased;
     public bool attackWasReleased;
+
+    public bool hasCannon;
     public bool shootWasReleased;
+
+    public void AttachCannon(Transform cannon)
+    {
+        state = State.getCannon;
+        timer = 0;
+        animator.CrossFade("Get Cannon", 0.1f);
+        hasCannon = true;
+        cannon.SetParent(rightClaw);
+        cannon.SetLocalPositionAndRotation(parameters.cannonPosition, Quaternion.Euler(parameters.cannonRotation));
+    }
 
     private void Start()
     {
@@ -53,6 +68,9 @@ public class Player : MonoBehaviour
                 break;
             case State.shoot:
                 Shoot();
+                break;
+            case State.getCannon:
+                GetCannon();
                 break;
         }
     }
@@ -87,7 +105,16 @@ public class Player : MonoBehaviour
             animator.CrossFade("Move", 0.1f);
         }
 
-        if (input.IsHoldingJump && jumpWasReleased && Physics.SphereCast(transform.position, 0.4f, Vector3.down, out RaycastHit hit, 0.1f, 1))
+        bool isOnGround = Physics.SphereCast(transform.position, 0.4f, Vector3.down, out RaycastHit hit, 0.1f, 1, QueryTriggerInteraction.Ignore);
+
+        if (isOnGround && transform.position.y < hit.point.y + sphereCollider.radius)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y = hit.point.y + sphereCollider.radius;
+            transform.position = newPosition;
+        }
+
+        if (input.IsHoldingJump && jumpWasReleased && isOnGround)
         {
             state = State.jump;
             jumpWasReleased = false;
@@ -104,6 +131,16 @@ public class Player : MonoBehaviour
             timer = 0;
             animator.CrossFade("Melee", 0.1f);
             Melee();
+            return;
+        }
+
+        if (hasCannon && input.IsBlocking && shootWasReleased)
+        {
+            state = State.shoot;
+            shootWasReleased = false;
+            timer = 0;
+            animator.CrossFade("Shoot", 0.1f);
+            Shoot();
             return;
         }
 
@@ -131,14 +168,16 @@ public class Player : MonoBehaviour
 
         jumpWasReleased = !input.IsHoldingJump;
         attackWasReleased = !input.IsAttacking;
-        shootWasReleased = true;
+        shootWasReleased = !input.IsBlocking;
     }
     void Jump()
     {
         timer += Time.fixedDeltaTime;
         float phase = timer / parameters.jumpDuration;
 
-        if (phase > 1)
+        bool isOnGround = Physics.SphereCast(transform.position, 0.4f, Vector3.down, out RaycastHit hit, 0.1f, 1, QueryTriggerInteraction.Ignore);
+
+        if (phase > 1 || (isOnGround && !input.IsHoldingJump))
         {
             state = State.move;
             animator.CrossFade("Move", 0.25f);
@@ -206,6 +245,56 @@ public class Player : MonoBehaviour
     }
     void Shoot()
     {
+        timer += Time.fixedDeltaTime;
 
+        float phase = timer / parameters.shootDuration;
+
+        if (phase > 1)
+        {
+            state = State.move;
+            animator.CrossFade("Move", 0.1f);
+            Move();
+            return;
+        }
+
+        Vector3 movementInput = camera.MovementRotation * new Vector3(input.MovementValue.x, 0, input.MovementValue.y);
+
+        lastUpdateRotation = nextUpdateRotation;
+        timeOfFixedUpdate = Time.time;
+
+        nextUpdateRotation = Mathf.MoveTowardsAngle(lastUpdateRotation, camera.targetEuler.y, Time.fixedDeltaTime * parameters.turnSpeed);
+
+        targetTilt = Vector2.zero;
+
+        Vector3 force = movementInput * parameters.speed * 0.5f;
+
+        force -= new Vector3(rigidbody.linearVelocity.x, 0, rigidbody.linearVelocity.z) * parameters.drag;
+
+        rigidbody.AddForce(force);
+    }
+    void GetCannon()
+    {
+        timer += Time.fixedDeltaTime;
+
+        float phase = timer / parameters.getCannonDuration;
+
+        if (phase > 1)
+        {
+            state = State.move;
+            animator.CrossFade("Move", 0.1f);
+            Move();
+            return;
+        }
+
+        lastUpdateRotation = nextUpdateRotation;
+        timeOfFixedUpdate = Time.time;
+
+        //float angleToCannon;
+
+        //nextUpdateRotation = Mathf.MoveTowardsAngle(lastUpdateRotation, angleToCannon, Time.fixedDeltaTime * parameters.turnSpeed);
+
+        Vector3 force = -new Vector3(rigidbody.linearVelocity.x, 0, rigidbody.linearVelocity.z) * parameters.drag;
+
+        rigidbody.AddForce(force);
     }
 }

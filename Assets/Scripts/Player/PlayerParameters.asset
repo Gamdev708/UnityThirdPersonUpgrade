@@ -17,7 +17,11 @@ MonoBehaviour:
   turnSpeed: 360
   tilt: 30
   tiltSpeed: 200
-  jumpDuration: 0.5
-  jumpForce: 100
-  jumpExponent: 3
+  jumpDuration: 0.7
+  jumpForce: 35
+  jumpExponent: 1
   meleeDuration: 0.6
+  cannonPosition: {x: 0.034, y: 0, z: 0}
+  cannonRotation: {x: 0, y: 0, z: 0}
+  shootDuration: 1.458
+  getCannonDuration: 2.9
