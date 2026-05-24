@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public SphereCollider sphereCollider;
 
     public Transform rightClaw;
-
+    public AudioSource jumpAudio;
     public Vector3 CenterPosition => sphereCollider.bounds.center;
 
     float lastUpdateRotation, nextUpdateRotation;
@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
         if (input.IsHoldingJump && jumpWasReleased && isOnGround)
         {
             state = State.jump;
+            jumpAudio.Play();
             jumpWasReleased = false;
             timer = 0;
             animator.CrossFade("Jump", 0.1f);
