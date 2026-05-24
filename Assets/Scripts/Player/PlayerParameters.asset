@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b237e3f97ad5bd14e9bedadbb7705f86, type: 3}
   m_Name: PlayerParameters
   m_EditorClassIdentifier: Assembly-CSharp::PlayerParameters
-  speed: 25
+  speed: 30
   drag: 8
   turnSpeed: 360
   tilt: 30
   tiltSpeed: 200
+  jumpDuration: 0.5
+  jumpForce: 100
+  jumpExponent: 3
+  meleeDuration: 0.6

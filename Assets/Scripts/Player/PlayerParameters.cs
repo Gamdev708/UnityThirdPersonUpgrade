@@ -10,4 +10,10 @@ public class PlayerParameters : ScriptableObject
 
     public float tilt;
     public float tiltSpeed;
+
+    public float jumpDuration;
+    public float jumpForce;
+    public float jumpExponent;
+
+    public float meleeDuration;
 }

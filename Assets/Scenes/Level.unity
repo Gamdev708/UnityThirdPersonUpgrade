@@ -1309,6 +1309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9dccba3f1055df743bd9ef21029a2c52, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 945454400225530728, guid: 9dccba3f1055df743bd9ef21029a2c52, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

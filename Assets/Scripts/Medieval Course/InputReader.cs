@@ -20,6 +20,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public Vector2 MovementValue { get; private set; }
 
+    public bool IsHoldingJump;
+
     public event Action JumpEvent;
     public event Action DodgeEvent;
     public event Action TargetEvent;
@@ -43,8 +45,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed)
         {
+            IsHoldingJump = false;
             return;
         }
+
+        IsHoldingJump = true;
 
         if (JumpEvent != null)
         {
