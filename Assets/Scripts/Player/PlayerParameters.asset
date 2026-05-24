@@ -20,7 +20,7 @@ MonoBehaviour:
   jumpDuration: 0.7
   jumpForce: 35
   jumpExponent: 1
-  meleeDuration: 0.6
+  meleeDuration: 0.45
   cannonPosition: {x: 0.034, y: 0, z: 0}
   cannonRotation: {x: 0, y: 0, z: 0}
   shootDuration: 1.458

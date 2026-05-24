@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     public enum State
     {
-        move, jump, melee, shoot, getCannon
+        move, jump, melee, shoot, attachCannon
     }
 
     public State state;
@@ -42,10 +42,10 @@ public class Player : MonoBehaviour
     public bool shootWasReleased;
     public bool shotWasLaunched;
 
-    public void AttachCannon(Transform cannon)
+    public void GetCannon(Transform cannon)
     {
         this.cannon = cannon;
-        state = State.getCannon;
+        state = State.attachCannon;
         timer = 0;
         animator.CrossFade("Get Cannon", 0.1f);
         hasCannon = true;
@@ -53,10 +53,14 @@ public class Player : MonoBehaviour
         cannon.SetLocalPositionAndRotation(parameters.cannonPosition, Quaternion.Euler(parameters.cannonRotation));
     }
 
+    Vector3 startPosition;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        startPosition = transform.position;
     }
 
     private void FixedUpdate()
@@ -75,8 +79,8 @@ public class Player : MonoBehaviour
             case State.shoot:
                 Shoot();
                 break;
-            case State.getCannon:
-                GetCannon();
+            case State.attachCannon:
+                AttachCannon();
                 break;
         }
     }
@@ -325,7 +329,7 @@ public class Player : MonoBehaviour
             energyShot.Shoot(cannon.position, camera.transform.rotation);
         }
     }
-    void GetCannon()
+    void AttachCannon()
     {
         timer += Time.fixedDeltaTime;
 
@@ -349,5 +353,13 @@ public class Player : MonoBehaviour
         Vector3 force = -new Vector3(rigidbody.linearVelocity.x, 0, rigidbody.linearVelocity.z) * parameters.drag;
 
         rigidbody.AddForce(force);
+    }
+
+    public void Destroyed()
+    {
+        transform.position = startPosition;
+        rigidbody.linearVelocity = Vector3.zero;
+        state = State.move;
+        animator.Play("Idle", 0);
     }
 }

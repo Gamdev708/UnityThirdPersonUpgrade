@@ -7,7 +7,7 @@ public class EnergyCannonPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        player.AttachCannon(cannon);
+        player.GetCannon(cannon);
 
         gameObject.SetActive(false);
     }
