@@ -92,7 +92,7 @@ ModelImporter:
       name: Melee
       takeName: Melee
       internalID: -2231655820661085090
-      firstFrame: 0
+      firstFrame: 5
       lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0

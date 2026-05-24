@@ -21,6 +21,12 @@ public class PlayerParameters : ScriptableObject
     public Vector3 cannonRotation;
 
     public float shootDuration;
+    public AnimationCurve shootAimCurve;
+
+    public float shotLifetime;
+    public float shotDistance;
+    public AnimationCurve shotScale;
+    public AnimationCurve shotAlpha;
 
     public float getCannonDuration;
 }
