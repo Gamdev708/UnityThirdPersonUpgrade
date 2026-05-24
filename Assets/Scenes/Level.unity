@@ -141,6 +141,133 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6421927161762930362, guid: 9dccba3f1055df743bd9ef21029a2c52, type: 3}
+--- !u!1 &7421224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7421229}
+  - component: {fileID: 7421228}
+  - component: {fileID: 7421227}
+  - component: {fileID: 7421226}
+  - component: {fileID: 7421225}
+  m_Layer: 0
+  m_Name: EnergyShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &7421225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92a59ac09b032f4b998667af698a0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnergyShot
+  parameters: {fileID: 11400000, guid: ed5b9affaadb7104b994d9e91ae38378, type: 2}
+  meshRenderer: {fileID: 7421227}
+--- !u!135 &7421226
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421224}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &7421227
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421224}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1ae6a3fafac4fa14e9b16707e83bfd3d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &7421228
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421224}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &7421229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421224}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.9604607, y: 0.56564045, z: -3.8467798}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &67470349
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2809,7 +2936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.8099942
+      value: -4.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2888,16 +3015,21 @@ MonoBehaviour:
   input: {fileID: 1909530096}
   camera: {fileID: 1220302293}
   parameters: {fileID: 11400000, guid: ed5b9affaadb7104b994d9e91ae38378, type: 2}
+  cannon: {fileID: 0}
+  energyShot: {fileID: 7421225}
   animator: {fileID: 1062506126}
   rigidbody: {fileID: 1062506129}
   sphereCollider: {fileID: 1062506128}
   rightClaw: {fileID: 596817640}
+  rightShoulder: {fileID: 1062506130}
+  rightElbow: {fileID: 1062506127}
   state: 0
   isIdle: 0
   jumpWasReleased: 0
   attackWasReleased: 0
   hasCannon: 0
   shootWasReleased: 0
+  shotWasLaunched: 0
 --- !u!95 &1062506126
 Animator:
   serializedVersion: 7
@@ -2920,6 +3052,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1062506127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8946309045258972644, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
+  m_PrefabInstance: {fileID: 1062506123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &1062506128
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2968,6 +3105,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!4 &1062506130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5946041919721076096, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
+  m_PrefabInstance: {fileID: 1062506123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1081705902
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4154,4 +4296,5 @@ SceneRoots:
   - {fileID: 688176002}
   - {fileID: 1062506123}
   - {fileID: 1448544926}
+  - {fileID: 7421229}
   - {fileID: 1201453992}

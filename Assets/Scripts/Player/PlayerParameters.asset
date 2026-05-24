@@ -24,4 +24,105 @@ MonoBehaviour:
   cannonPosition: {x: 0.034, y: 0, z: 0}
   cannonRotation: {x: 0, y: 0, z: 0}
   shootDuration: 1.458
+  shootAimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.4
+      outSlope: 1.4
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.4
+      outSlope: -1.4
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shotLifetime: 0.5
+  shotDistance: 20
+  shotScale:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10.522383
+      outSlope: 10.522383
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1415815
+    - serializedVersion: 3
+      time: 0.5
+      value: 5
+      inSlope: -0.042016644
+      outSlope: -0.042016644
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 2.5
+      inSlope: -13.456222
+      outSlope: -13.456222
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.25833333
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shotAlpha:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.73333335
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.003913919
+      outSlope: 0.003913919
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.006279435
+      outSlope: 0.006279435
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37916666
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   getCannonDuration: 2.9

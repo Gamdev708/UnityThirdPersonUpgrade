@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561b2302cb2459c4496dafe0a21bb53c, type: 3}
   m_Name: CameraParameters
   m_EditorClassIdentifier: Assembly-CSharp::CameraParameters
-  localPosition: {x: 0, y: 0.5, z: -2.49}
+  localPosition: {x: 0, y: -0.5, z: -2.49}
   sensitivity: 0.5
