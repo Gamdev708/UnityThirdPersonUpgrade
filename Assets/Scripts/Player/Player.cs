@@ -87,12 +87,12 @@ public class Player : MonoBehaviour
             animator.CrossFade("Move", 0.1f);
         }
 
-        if (input.IsHoldingJump && jumpWasReleased && Physics.SphereCast(transform.position, 0.3f, Vector3.down, out RaycastHit hit, 0.1f, 1))
+        if (input.IsHoldingJump && jumpWasReleased && Physics.SphereCast(transform.position, 0.4f, Vector3.down, out RaycastHit hit, 0.1f, 1))
         {
             state = State.jump;
             jumpWasReleased = false;
             timer = 0;
-            animator.CrossFade("Move", 0.1f);
+            animator.CrossFade("Jump", 0.1f);
             Jump();
             return;
         }
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
         if (phase > 1)
         {
             state = State.move;
-            animator.CrossFade("Move", 0.1f);
+            animator.CrossFade("Move", 0.25f);
             Move();
             return;
         }
@@ -151,8 +151,11 @@ public class Player : MonoBehaviour
         lastUpdateRotation = nextUpdateRotation;
         timeOfFixedUpdate = Time.time;
 
-        float targetRotation = Vector3.SignedAngle(Vector3.forward, movementInput, Vector3.up);
-        nextUpdateRotation = Mathf.MoveTowardsAngle(lastUpdateRotation, targetRotation, Time.fixedDeltaTime * parameters.turnSpeed);
+        if (input.MovementValue.sqrMagnitude > 0)
+        {
+            float targetRotation = Vector3.SignedAngle(Vector3.forward, movementInput, Vector3.up);
+            nextUpdateRotation = Mathf.MoveTowardsAngle(lastUpdateRotation, targetRotation, Time.fixedDeltaTime * parameters.turnSpeed);
+        }
 
         targetTilt = new Vector2(movementInput.x, movementInput.z) * parameters.tilt * 0.5f;
 

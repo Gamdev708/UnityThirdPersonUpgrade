@@ -2710,7 +2710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.902
+      value: 1.001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3affbf6afadcf84590a1c2da5de4623, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2797,6 +2797,10 @@ MonoBehaviour:
   rigidbody: {fileID: 1062506129}
   sphereCollider: {fileID: 1062506128}
   state: 0
+  isIdle: 0
+  jumpWasReleased: 0
+  attackWasReleased: 0
+  shootWasReleased: 0
 --- !u!95 &1062506126
 Animator:
   serializedVersion: 7
@@ -2838,7 +2842,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.35
+  m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1062506129
 Rigidbody:
@@ -3749,6 +3753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1407de1b8bd364dad66117d51aecc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputReader
+  IsHoldingJump: 0
 --- !u!4 &1909530097
 Transform:
   m_ObjectHideFlags: 0

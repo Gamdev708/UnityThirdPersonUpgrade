@@ -21,9 +21,9 @@ public class PlayerCamera : MonoBehaviour
         transform.position = player.CenterPosition + targetRotation * parameters.localPosition;
 
         Vector3 playerToCamera = transform.position - player.CenterPosition;
-        if (Physics.SphereCast(player.CenterPosition, 0, playerToCamera, out RaycastHit hit, playerToCamera.magnitude, 1))
+        if (Physics.SphereCast(player.CenterPosition, 0.4f, playerToCamera, out RaycastHit hit, playerToCamera.magnitude, 1))
         {
-            transform.position = hit.point;
+            transform.position = hit.point + hit.normal * 0.4f;
         }
     }
 
