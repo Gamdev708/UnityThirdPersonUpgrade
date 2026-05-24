@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public SphereCollider sphereCollider;
 
     public Transform rightClaw;
+    public AudioSource jumpAudio;
+    public AudioSource meleeAudio;
     public Transform rightShoulder;
     public Transform rightElbow;
 
@@ -143,6 +145,7 @@ public class Player : MonoBehaviour
         if (input.IsHoldingJump && jumpWasReleased && isOnGround)
         {
             state = State.jump;
+            jumpAudio.Play();
             jumpWasReleased = false;
             timer = 0;
             animator.CrossFade("Jump", 0.1f);
@@ -153,6 +156,7 @@ public class Player : MonoBehaviour
         if (input.IsAttacking && attackWasReleased)
         {
             state = State.melee;
+            meleeAudio.Play();
             attackWasReleased = false;
             timer = 0;
             animator.CrossFade("Melee", 0.1f);
