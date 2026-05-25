@@ -9,10 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d329384aab5e7d749b46197aa8c3c08f
   - enabled: 1
-    path: Assets/Scenes/Sandbox.unity
-    guid: ade1fc2c93eb2054b9f368530de64a34
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Level.unity
+    guid: 9a6c405ebe970f947a9526c02f65a253
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
